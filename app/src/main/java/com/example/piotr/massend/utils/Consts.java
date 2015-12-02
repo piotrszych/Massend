@@ -11,4 +11,6 @@ public class Consts {
     public static final int REQUEST_CODE_ADD_TEMPLATE = 0x005;
     public static final int REQUEST_CODE_EDIT_TEMPLATE = 0x006;
     public static final String DATA_TEMPLATE_CONTENT = "data_template_content";
+
+    public static final String REQUEST_CODE = "requestCode";
 }

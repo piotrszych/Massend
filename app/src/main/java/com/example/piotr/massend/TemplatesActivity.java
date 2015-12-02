@@ -89,7 +89,8 @@ public class TemplatesActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent addNewTemplateIntent = new Intent(TemplatesActivity.this, TemplateEditAddActivity.class);
-                startActivityForResult(addNewTemplateIntent, Consts.REQUEST_CODE_EDIT_TEMPLATE);
+                addNewTemplateIntent.putExtra(Consts.REQUEST_CODE, Consts.REQUEST_CODE_ADD_TEMPLATE);
+                startActivityForResult(addNewTemplateIntent, Consts.REQUEST_CODE_ADD_TEMPLATE);
             }
         });
     }

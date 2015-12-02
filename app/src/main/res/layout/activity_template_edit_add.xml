@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/tea_editing"
+            android:id="@+id/tea_tv_editing_title"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
