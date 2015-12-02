@@ -31,6 +31,8 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //TODO start activity of writing message
+                Intent writeMessageIntent = new Intent(MainMenuActivity.this, WriteMessageActivity.class);
+                startActivity(writeMessageIntent);
             }
         });
 

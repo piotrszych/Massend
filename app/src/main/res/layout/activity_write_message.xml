@@ -31,19 +31,19 @@
             android:id="@+id/write_message_button_show_recipients"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/write_message_button_show_recipients"
             tools:ignore="ButtonStyle" />
         <Button
             android:id="@+id/write_message_button_choose_recipients"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/write_message_button_choose_recipients"
             tools:ignore="ButtonStyle" />
     </LinearLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/write_message_main_input"
         android:layout_above="@id/write_message_button_templates"
         android:layout_below="@id/write_message_top_button_holder"
@@ -51,7 +51,8 @@
         android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:editable="true"
+        android:inputType="textMultiLine"
+        android:gravity="top"
         android:padding="3dp"
         android:background="@drawable/textview_border"
         tools:ignore="Deprecated,TextViewEdits" />
