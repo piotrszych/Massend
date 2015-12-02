@@ -48,6 +48,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.piotr.massend.MainMenuActivity" />
         </activity>
+        <activity
+            android:name=".TemplateEditAddActivity"
+            android:label="@string/title_activity_template_edit_add"
+            android:parentActivityName=".TemplatesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.piotr.massend.TemplatesActivity" />
+        </activity>
     </application>
 
 </manifest>

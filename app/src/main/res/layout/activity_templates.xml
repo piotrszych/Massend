@@ -12,13 +12,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/templates_tv_title"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:text="@string/title_activity_templates"
+            android:gravity="center"
+            android:textSize="20sp"/>
         <Button
+            android:id="@+id/templates_button_add_new"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:text="@string/templates_add_new"/>
     </LinearLayout>
 
     <ListView

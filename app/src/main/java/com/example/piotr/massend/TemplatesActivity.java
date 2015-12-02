@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,9 @@ import java.util.ArrayList;
 
 public class TemplatesActivity extends Activity {
 
+    //controls
     private ListView lv_template_holder;
+    private Button button_add_new;
     DatabaseDummy db;
 
     @Override
@@ -77,6 +80,16 @@ public class TemplatesActivity extends Activity {
                 });
                 builder.create().show();
                 return true;
+            }
+        });
+
+        //button for adding new template
+        button_add_new = (Button) findViewById(R.id.templates_button_add_new);
+        button_add_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addNewTemplateIntent = new Intent(TemplatesActivity.this, TemplateEditAddActivity.class);
+                startActivityForResult(addNewTemplateIntent, Consts.REQUEST_CODE_EDIT_TEMPLATE);
             }
         });
     }
