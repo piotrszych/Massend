@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Massend</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--login activity and layout-->
+    <string name="login_layout_button">Zaloguj się</string>
+    <string name="login_layout_hint_login">Login</string>
+    <string name="login_layout_hint_password">Hasło</string>
+    <string name="login_activity_toast_short_login">Za krótki login! Minimalna długość loginu: %1$d</string>
+    <string name="login_activity_toast_short_password">Za krótkie hasło! Minimalna długość hasła: %1$d</string>
+    <string name="login_activity_toast_wrong_password">Niepoprawne hasło!</string>
+    <string name="login_activity_toast_wrong_credentials">Nie ma takiego użytkownika!</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+
+    <!--main menu activity and layout-->
+    <string name="main_menu_layout_button_writemessage">Napisz wiadomość</string>
+    <string name="main_menu_layout_button_settings">Ustawienia</string>
+    <string name="title_activity_write_message">Napisz wiadomość</string>
+
+    <!--write message activity and layout-->
+    <string name="write_message_button_send">Wyślij wiadomośc</string>
+    <string name="write_message_button_templates">Wybierz szablon</string>
+    <string name="write_message_button_show_recipients">Pokaż odbiorców</string>
+    <string name="write_message_button_choose_recipients">Wybierz odbiorców</string>
+    <string name="title_activity_templates">TemplatesActivity</string>
+
+    <!--shared-->
+    <string name="placeholder">Placeholder</string>
+</resources>

@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.piotr.massend.WriteMessageActivity">
+
+    <Button
+        android:id="@+id/write_message_button_send"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/write_message_button_send"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/write_message_button_templates"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/write_message_button_send"
+        android:text="@string/write_message_button_templates"/>
+
+    <LinearLayout
+        android:id="@+id/write_message_top_button_holder"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/write_message_button_show_recipients"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/write_message_button_show_recipients"
+            tools:ignore="ButtonStyle" />
+        <Button
+            android:id="@+id/write_message_button_choose_recipients"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/write_message_button_choose_recipients"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/write_message_main_input"
+        android:layout_above="@id/write_message_button_templates"
+        android:layout_below="@id/write_message_top_button_holder"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:editable="true"
+        android:padding="3dp"
+        android:background="@drawable/textview_border"
+        tools:ignore="Deprecated,TextViewEdits" />
+</RelativeLayout>
