@@ -37,7 +37,7 @@ public class TemplatesActivity extends Activity {
 
         ArrayList<Template> alist_template = db.getAllTemplates();
 
-        TemplateArrayAdapter taa = new TemplateArrayAdapter(this, alist_template);
+        final TemplateArrayAdapter taa = new TemplateArrayAdapter(this, alist_template);
         lv_template_holder.setAdapter(taa);
         lv_template_holder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class TemplatesActivity extends Activity {
                 //TODO wybor: edycja, usuniecie
                 String[] options = {"Edytuj", "Usuń"};
 
-                Template template = (Template) lv_template_holder.getItemAtPosition(position);
+                final Template template = (Template) lv_template_holder.getItemAtPosition(position);
                 AlertDialog.Builder builder = new AlertDialog.Builder(TemplatesActivity.this);
                 builder.setTitle(template.getName());
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -69,8 +69,8 @@ public class TemplatesActivity extends Activity {
                                 Toast.makeText(TemplatesActivity.this, "Edycja", Toast.LENGTH_SHORT).show();
                                 break;
                             case 1:     //usun
-                                //TODO obsluga usuwania
-                                Toast.makeText(TemplatesActivity.this, "Usuwanie", Toast.LENGTH_SHORT).show();
+                                ConfirmDeleteDialog confirmDelete = new ConfirmDeleteDialog(TemplatesActivity.this, template, taa, db);
+                                confirmDelete.show();
                                 break;
                         }
                     }
@@ -96,6 +96,30 @@ public class TemplatesActivity extends Activity {
             TextView tvTitle = (TextView) convertView.findViewById(R.id.listitem_templates_tv);
             tvTitle.setText(tpl.getName());
             return convertView;
+        }
+    }
+
+    private class ConfirmDeleteDialog extends AlertDialog {
+        public ConfirmDeleteDialog(Context context, final Template t, final TemplateArrayAdapter taa, final DatabaseDummy db) {
+            super(context);
+
+            setTitle(R.string.templates_delete_warning_title);
+            setMessage(getString(R.string.templates_delete_warning, t.getName()));
+            setButton(BUTTON_POSITIVE, getString(R.string.dialog_yes), new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    db.deleteTemplateByName(t.getName());
+                    taa.remove(t);
+                    //notify adapter of changes
+                    taa.notifyDataSetChanged();
+                }
+            });
+            setButton(BUTTON_NEGATIVE, getString(R.string.dialog_no), new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dismiss();
+                }
+            });
         }
     }
 }

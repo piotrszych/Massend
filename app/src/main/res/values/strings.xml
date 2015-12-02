@@ -26,6 +26,12 @@
     <string name="write_message_button_choose_recipients">Wybierz odbiorców</string>
     <string name="title_activity_templates">TemplatesActivity</string>
 
+    <!--templates activity-->
+    <string name="templates_delete_warning_title">Uwaga!</string>
+    <string name="templates_delete_warning">Zamierzasz usunąć %1$s. Czy jesteś pewien?</string>
+
     <!--shared-->
     <string name="placeholder">Placeholder</string>
+    <string name="dialog_yes">Tak</string>
+    <string name="dialog_no">Nie</string>
 </resources>
