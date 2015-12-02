@@ -20,10 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_layout_button"
-        android:layout_below="@+id/login_et_password"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="140dp" />
+        android:layout_alignParentBottom="true" />
 
     <EditText
         android:id="@+id/login_et_password"
