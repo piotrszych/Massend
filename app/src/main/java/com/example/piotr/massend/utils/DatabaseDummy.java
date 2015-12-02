@@ -107,7 +107,7 @@ public class DatabaseDummy {
     }
 
     public void deleteTemplateByName(String name) {
-        database.delete(TABLE_TEMPLATES, COL_TEMPLATES_TITLE + " = " + name, null);
+        database.delete(TABLE_TEMPLATES, COL_TEMPLATES_TITLE + " = '" + name + "';", null);
     }
 
     public ArrayList<Contact> getAllContacts() {
