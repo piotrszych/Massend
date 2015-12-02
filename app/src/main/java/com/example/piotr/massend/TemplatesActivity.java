@@ -1,24 +1,27 @@
 package com.example.piotr.massend;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.piotr.massend.utils.Consts;
 import com.example.piotr.massend.utils.DatabaseDummy;
 import com.example.piotr.massend.utils.Template;
 
 import java.util.ArrayList;
 
-public class TemplatesActivity extends AppCompatActivity {
+public class TemplatesActivity extends Activity {
 
     private ListView lv_template_holder;
     DatabaseDummy db;
@@ -39,15 +42,41 @@ public class TemplatesActivity extends AppCompatActivity {
         lv_template_holder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO przechodzenie do aktywnosci template
+                String templateContent = ((Template) lv_template_holder.getItemAtPosition(position)).getContent();
+                //prepare and return data
+                Intent data = new Intent();
+                data.putExtra(Consts.DATA_TEMPLATE_CONTENT, templateContent);
+                setResult(Consts.REQUEST_CODE_GET_TEMPLATE, data);
+                finish();
             }
         });
 
-        lv_template_holder.setOnLongClickListener(new View.OnLongClickListener() {
+        lv_template_holder.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                //TODO usuwanie
-                return false;
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                //TODO wybor: edycja, usuniecie
+                String[] options = {"Edytuj", "Usuń"};
+
+                Template template = (Template) lv_template_holder.getItemAtPosition(position);
+                AlertDialog.Builder builder = new AlertDialog.Builder(TemplatesActivity.this);
+                builder.setTitle(template.getName());
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:     //edytuj
+                                //TODO obsluga edycji
+                                Toast.makeText(TemplatesActivity.this, "Edycja", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 1:     //usun
+                                //TODO obsluga usuwania
+                                Toast.makeText(TemplatesActivity.this, "Usuwanie", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                });
+                builder.create().show();
+                return true;
             }
         });
     }
