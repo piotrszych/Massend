@@ -38,6 +38,10 @@
     <string name="template_edit_add_save_template">Zapisz szablon</string>
     <string name="template_edit_add_change_title_hint">Wprowadź nową nazwę</string>
     <string name="template_edit_add_dialog_edit_title_new_template_title">Nowy szablon</string>
+    <string name="template_edit_add_dialog_backbutton_message">Czy chcesz zapisać wprowadzone zmiany?</string>
+
+    <!--contacts activity-->
+    <string name="contacts_title">Wybierz odbiorców</string>
 
     <!--shared-->
     <string name="placeholder">Placeholder</string>
@@ -46,4 +50,5 @@
     <string name="dialog_save">Zapisz</string>
     <string name="dialog_cancel">Anuluj</string>
     <string name="dialog_warning">Uwaga!</string>
+    <string name="title_activity_contacts">ContactsActivity</string>
 </resources>

@@ -83,6 +83,7 @@ public class TemplateEditAddActivity extends Activity{
             //display prompt on save
             AlertDialog.Builder builder = new AlertDialog.Builder(TemplateEditAddActivity.this);
             builder.setTitle(R.string.dialog_warning);
+            builder.setMessage(R.string.template_edit_add_dialog_backbutton_message);
             builder.setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
