@@ -97,7 +97,13 @@ public class DatabaseDummy {
         return database.insert(TABLE_USERS, null, cv);
     }
 
-    //TODO edit template
+    public long editTemplateByName(String nameToEdit, String newName, String newContent) {
+        String filter = COL_TEMPLATES_TITLE + "='" + nameToEdit + "'";
+        ContentValues cv = new ContentValues();
+        cv.put(COL_TEMPLATES_TITLE, newName);
+        cv.put(COL_TEMPLATES_CONTENT, newContent);
+        return database.update(TABLE_TEMPLATES, cv, filter, null);
+    }
 
     public long insertIntoTemplates(String name, String content) {
         ContentValues cv = new ContentValues();

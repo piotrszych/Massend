@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.piotr.massend.utils.Consts;
 import com.example.piotr.massend.utils.DatabaseDummy;
@@ -27,7 +26,11 @@ public class TemplatesActivity extends Activity {
     //controls
     private ListView lv_template_holder;
     private Button button_add_new;
+
+    //database
     DatabaseDummy db;
+
+    TemplateArrayAdapter taa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class TemplatesActivity extends Activity {
 
         ArrayList<Template> alist_template = db.getAllTemplates();
 
-        final TemplateArrayAdapter taa = new TemplateArrayAdapter(this, alist_template);
+        taa = new TemplateArrayAdapter(this, alist_template);
         lv_template_holder.setAdapter(taa);
         lv_template_holder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -56,7 +59,7 @@ public class TemplatesActivity extends Activity {
 
         lv_template_holder.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 //TODO wybor: edycja, usuniecie
                 String[] options = {"Edytuj", "Usuń"};
 
@@ -68,8 +71,15 @@ public class TemplatesActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:     //edytuj
-                                //TODO obsluga edycji
-                                Toast.makeText(TemplatesActivity.this, "Edycja", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(TemplatesActivity.this, TemplateEditAddActivity.class);
+                                Bundle extras = new Bundle();
+                                String name = template.getName();
+                                String content = template.getContent();
+                                extras.putString(Consts.DATA_TEMPLATE_NAME, name);
+                                extras.putString(Consts.DATA_TEMPLATE_CONTENT, content);
+                                extras.putInt(Consts.DATA_TEMPLATE_POSITION, position);
+                                intent.putExtras(extras);
+                                startActivityForResult(intent, Consts.REQUEST_CODE_EDIT_TEMPLATE);
                                 break;
                             case 1:     //usun
                                 ConfirmDeleteDialog confirmDelete = new ConfirmDeleteDialog(TemplatesActivity.this, template, taa, db);
@@ -95,6 +105,22 @@ public class TemplatesActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK) {
+            int modPosition = data.getIntExtra(Consts.DATA_TEMPLATE_POSITION, -1);
+            if(modPosition != -1) {
+                String newName = data.getStringExtra(Consts.DATA_TEMPLATE_NAME);
+                String newContent = data.getStringExtra(Consts.DATA_TEMPLATE_CONTENT);
+                taa.remove(taa.getItem(modPosition));
+                taa.insert(new Template(newName, newContent), modPosition);
+                taa.notifyDataSetChanged();
+            }
+        }
+    }
+
     private class TemplateArrayAdapter extends ArrayAdapter<Template> {
 
         public TemplateArrayAdapter(Context context, ArrayList<Template> templates_title) {
@@ -117,7 +143,7 @@ public class TemplatesActivity extends Activity {
         public ConfirmDeleteDialog(Context context, final Template t, final TemplateArrayAdapter taa, final DatabaseDummy db) {
             super(context);
 
-            setTitle(R.string.templates_delete_warning_title);
+            setTitle(R.string.dialog_warning);
             setMessage(getString(R.string.templates_delete_warning, t.getName()));
             setButton(BUTTON_POSITIVE, getString(R.string.dialog_yes), new OnClickListener() {
                 @Override

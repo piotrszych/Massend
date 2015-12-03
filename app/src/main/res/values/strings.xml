@@ -27,7 +27,6 @@
 
     <!--templates activity-->
     <string name="title_activity_templates">Szablony wiadomości</string>
-    <string name="templates_delete_warning_title">Uwaga!</string>
     <string name="templates_delete_warning">Zamierzasz usunąć %1$s. Czy jesteś pewien?</string>
     <string name="templates_add_new">Dodaj nowy szablon</string>
 
@@ -37,9 +36,14 @@
     <string name="template_edit_add_edited_template_message">Edytujesz szablon: %1$s</string>
     <string name="template_edit_add_change_title">Zmień nazwę szablonu</string>
     <string name="template_edit_add_save_template">Zapisz szablon</string>
+    <string name="template_edit_add_change_title_hint">Wprowadź nową nazwę</string>
+    <string name="template_edit_add_dialog_edit_title_new_template_title">Nowy szablon</string>
 
     <!--shared-->
     <string name="placeholder">Placeholder</string>
     <string name="dialog_yes">Tak</string>
     <string name="dialog_no">Nie</string>
+    <string name="dialog_save">Zapisz</string>
+    <string name="dialog_cancel">Anuluj</string>
+    <string name="dialog_warning">Uwaga!</string>
 </resources>
