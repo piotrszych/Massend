@@ -20,10 +20,13 @@
 
     <!--write message activity and layout-->
     <string name="title_activity_write_message">Napisz wiadomość</string>
-    <string name="write_message_button_send">Wyślij wiadomośc</string>
+    <string name="write_message_button_send">Wyślij wiadomość</string>
     <string name="write_message_button_templates">Wybierz szablon</string>
     <string name="write_message_button_show_recipients">Pokaż odbiorców</string>
     <string name="write_message_button_choose_recipients">Wybierz odbiorców</string>
+    <string name="write_message_dialog_recipients_title">Wybrani odbiorcy</string>
+    <string name="write_message_dialog_no_recipients_chosen">Nie wybrano jeszcze żadnego odbiorcy!</string>
+    <string name="write_message_warning_no_content">Żeby wysłać wiadomość, musisz wprowadzić treść</string>
 
     <!--templates activity-->
     <string name="title_activity_templates">Szablony wiadomości</string>

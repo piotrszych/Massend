@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainMenuActivity extends Activity {
 
@@ -40,8 +41,11 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //start activity of settings
-                Intent settingsIntent = new Intent(MainMenuActivity.this, SettingsActivity.class);
-                startActivity(settingsIntent);
+                //TODO add settings implementation
+                //Intent settingsIntent = new Intent(MainMenuActivity.this, SettingsActivity.class);
+                //startActivity(settingsIntent);
+
+                Toast.makeText(MainMenuActivity.this, "Tylko w wersji premium :P", Toast.LENGTH_SHORT).show();
             }
         });
     }

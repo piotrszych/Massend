@@ -122,11 +122,46 @@ public class DatabaseDummy {
         Cursor cursor = database.rawQuery(query, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            alist_toReturn.add(new Contact(cursor.getString(1), cursor.getString(2), cursor.getString(3)));
+            alist_toReturn.add(new Contact(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
             cursor.moveToNext();
         }
         cursor.close();
         return alist_toReturn;
+    }
+
+    public ArrayList<Contact[]> getAllContactsGrouped() {
+        ArrayList<Contact[]> groupedContactsList = new ArrayList<>();
+
+        //first, get all groups
+        String getAllGroupsQuery = "SELECT DISTINCT " + COL_CONTACTS_GROUP + " FROM " + TABLE_CONTACTS + ";";
+        Cursor groupsCursor = database.rawQuery(getAllGroupsQuery, null);
+        ArrayList<String> groups = new ArrayList<>();
+        groupsCursor.moveToFirst();
+        while (!groupsCursor.isAfterLast()) {
+            groups.add(groupsCursor.getString(0));
+            groupsCursor.moveToNext();
+        }
+        groupsCursor.close();
+
+        //then, for all groups get items
+        for (String groupName : groups) {
+            String getAllFromGroupQuery = "SELECT * FROM " + TABLE_CONTACTS + " WHERE " + COL_CONTACTS_GROUP + " = '" + groupName + "';";
+            Cursor groupCursor = database.rawQuery(getAllFromGroupQuery, null);
+            ArrayList<Contact> contactsFromGroup = new ArrayList<>();
+            groupCursor.moveToFirst();
+            while (!groupCursor.isAfterLast()) {
+                contactsFromGroup.add(new Contact(groupCursor.getInt(0), groupCursor.getString(1), groupCursor.getString(2), groupCursor.getString(3)));
+                groupCursor.moveToNext();
+            }
+            groupCursor.close();
+            Contact[] contactsArray = new Contact[contactsFromGroup.size()];
+            for (int i = 0; i < contactsFromGroup.size(); i++) {
+                contactsArray[i] = contactsFromGroup.get(i);
+            }
+            groupedContactsList.add(contactsArray);
+        }
+
+        return groupedContactsList;
     }
 
     public ArrayList<Template> getAllTemplates() {

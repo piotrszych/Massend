@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.piotr.massend" >
+    package="com.example.piotr.massend">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/title_activity_main_menu"
-            android:parentActivityName=".LoginActivity" >
+            android:parentActivityName=".LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.piotr.massend.LoginActivity" />
@@ -27,7 +27,7 @@
         <activity
             android:name=".WriteMessageActivity"
             android:label="@string/title_activity_write_message"
-            android:parentActivityName=".MainMenuActivity" >
+            android:parentActivityName=".MainMenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.piotr.massend.MainMenuActivity" />
@@ -35,7 +35,7 @@
         <activity
             android:name=".TemplatesActivity"
             android:label="@string/title_activity_templates"
-            android:parentActivityName=".WriteMessageActivity" >
+            android:parentActivityName=".WriteMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.piotr.massend.WriteMessageActivity" />
@@ -43,7 +43,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainMenuActivity" >
+            android:parentActivityName=".MainMenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.piotr.massend.MainMenuActivity" />
@@ -51,10 +51,18 @@
         <activity
             android:name=".TemplateEditAddActivity"
             android:label="@string/title_activity_template_edit_add"
-            android:parentActivityName=".TemplatesActivity" >
+            android:parentActivityName=".TemplatesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.piotr.massend.TemplatesActivity" />
+        </activity>
+        <activity
+            android:name=".ContactsActivity"
+            android:label="@string/title_activity_contacts"
+            android:parentActivityName=".WriteMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.piotr.massend.WriteMessageActivity" />
         </activity>
     </application>
 
