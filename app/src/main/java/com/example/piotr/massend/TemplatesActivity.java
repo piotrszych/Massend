@@ -110,13 +110,16 @@ public class TemplatesActivity extends Activity {
 
         if(resultCode == RESULT_OK) {
             int modPosition = data.getIntExtra(Consts.DATA_TEMPLATE_POSITION, -1);
+            String newName = data.getStringExtra(Consts.DATA_TEMPLATE_NAME);
+            String newContent = data.getStringExtra(Consts.DATA_TEMPLATE_CONTENT);
             if(modPosition != -1) {
-                String newName = data.getStringExtra(Consts.DATA_TEMPLATE_NAME);
-                String newContent = data.getStringExtra(Consts.DATA_TEMPLATE_CONTENT);
                 taa.remove(taa.getItem(modPosition));
                 taa.insert(new Template(newName, newContent), modPosition);
-                taa.notifyDataSetChanged();
             }
+            else {
+                taa.add(new Template(newName, newContent));
+            }
+            taa.notifyDataSetChanged();
         }
     }
 
