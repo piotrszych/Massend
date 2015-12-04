@@ -60,7 +60,6 @@ public class TemplatesActivity extends Activity {
         lv_template_holder.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                //TODO wybor: edycja, usuniecie
                 String[] options = {"Edytuj", "Usuń"};
 
                 final Template template = (Template) lv_template_holder.getItemAtPosition(position);
